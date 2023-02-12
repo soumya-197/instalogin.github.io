@@ -1,0 +1,162 @@
+<!-- 
+<?php
+if(isset($_POST['username'])){
+$server = "localhost";
+$username="root";
+$password="";
+$db="insta_login";
+$con=mysqli_connect($server,$username,$password,"logininsta");
+if(!$con){
+    die("Connection to this database failed due to" .
+    mysqli_connect_error());
+}
+$user=$_POST['username'];
+$pass=$_POST['pass'];
+
+$sql="SELECT * FROM `admin_login` WHERE `username`='$user' AND `password`='$pass'";
+$result = mysqli_query($con,$sql);
+$num = mysqli_num_rows($result);
+if($num==1){
+    echo "Login Successful";
+}
+else{
+    echo "Incorrect Password";
+}
+$con->close();
+}
+?>
+<?php
+    if(isset($_POST['phone'])){
+    $server="localhost";
+    $username = "root";
+    $password = "";
+    $db="insta_login";
+    $con = mysqli_connect($server,$username,$password,"logininsta");
+    if(!$con){
+        die("Connection to this database failed due to" .
+        mysqli_connect_error());
+    }
+    $phone = $_POST['phone'];
+    $name=$_POST['name'];
+    $user = $_POST['usern'];
+    $sql="SELECT * FROM `admin_login` WHERE `username`='$user'";
+    $result = mysqli_query($con,$sql);
+    $num = mysqli_num_rows($result);
+    if($num==1){
+        echo "Username already existsl";
+    }
+    else{
+    $pass=$_POST['password'];
+    $sql="INSERT INTO `admin_login` (`mobile`, `name`, `username`, `password`) VALUES ('$phone', '$name', '$user', '$pass')";
+    if($con->query($sql)==true){
+        echo "Successfully inserted";
+        // flag for successfull insertion 
+    }
+    else{
+        echo "ERROR: $sql <br> $con->error";
+    }
+    }
+    $con->close();
+    }
+?> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type = "image/x-icon" href="./images/instagram-new--v1.png" type="image/x-icon">
+    <title>Instagram</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Inter:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="mob">
+            <img class="img1" src="./images/mob.png" alt="">
+            <img class="img2" src="./images/mob.png" alt="">
+            <img class="s1" src="./images/s1.jpeg" alt="">
+                <img class="s1 e2" src="./images/s2.jpeg" alt="">
+                <img class="s1 e3" src="./images/s3.jpeg" alt="">
+                <img class="s1 e4" src="./images/s4.jpeg" alt="">
+                <img class="s1 e1" id="loopimg" src="./images/s1.jpeg" alt="">
+        
+        </div>
+        <div class="main">
+            <div class="login" id="login">
+                <img src="./images/logo.jpg" class="logo" alt="">
+                <form action="index.php" method="post">
+                    <input type="text" name="username" id="username" placeholder="Username" required>
+                    <input type="password" name="pass" id="pass" placeholder="Password" required>
+                    <button>Log in</button>
+                </form>
+                <div class="or">
+                    <div class="line"></div>
+                    <p>OR</p>
+                    <div class="line"></div>
+                </div>
+                <div>
+                    <div class="fb_login">
+                        <img src="./images/fb.jpg" alt="" width="18px">
+                        <p>Log in with Facebook</p>
+                    </div>
+                    <p class="forgot">Forgot password?</p>
+                </div>
+            </div>
+            <div class="login signup" id="1">
+                <p id="changep">Don't have an account? <span onclick="switchdiv()" id="changes"> Sign in</span></p>
+            </div>
+            <div class="login" id="signup">
+                <img src="./images/logo.jpg" class="logo" alt="">
+                <h3>Sign up to see photos and videos <br> from your friends.</h3>
+                <button class="fb_login fb"><img src="./images/fb2.jpg" alt="" width="18px">
+                        <p>Log in with Facebook</p></button>
+                <div class="or">
+                    <div class="line"></div>
+                    <p>OR</p>
+                    <div class="line"></div>
+                </div>
+                <form action="index.php" method="post">
+                    <input type="text" name="phone" id="phone" placeholder="Mobile Number or Email" required>
+                    <input type="name" name="name" id="name" placeholder="Full Name" required>
+                    <input type="text" name="usern" id="usern" placeholder="Username" required>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    <p>People who use our service may have uploaded <br>your contact information to Instagram. <span>Learn <br>More</span></p>
+                    <p>By signing up, you agree to our <span>Terms</span> , <span>Privacy  <br> Policy</span> and <span>Cookies Policy</span> .</p>
+                    <button>Sign up</button>
+                </form>
+            </div>
+        <div class="login signup none" id="2">
+            <p id="changep">Have an account? <span onclick="switchdiv()" id="changes"> Log in</span></p>
+        </div>
+        <div class="getapp">
+        <p>Get the app.</p>
+        <div class="img">
+            <img class="i1" src="./images/googleplay.png" width="120px" alt="">
+            <img src="./images/microsoft.jpg" width="120px" alt="">
+        </div>
+        </div>
+    </div>
+    </div>
+<script src="./script.js"></script>
+</body>
+<footer>
+        <div>
+            <a href="">Meta</a>
+            <a href="">About</a>
+            <a href="">Blog</a>
+            <a href="">Jobs</a>
+            <a href="">Help</a>
+            <a href="">API</a>
+            <a href="">Privacy</a>
+            <a href="">Terms</a>
+            <a href="">Top Accounts</a>
+            <a href="">Locations</a>
+            <a href="">Instagram Lite</a>
+            <a href="">Contact Uploading & Non-Users</a>
+        </div>
+            <p>2023 Instagram from Meta</p>
+</footer>
+</html>
